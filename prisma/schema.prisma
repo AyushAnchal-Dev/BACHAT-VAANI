@@ -1,0 +1,154 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  ADMIN
+  SUPERADMIN
+}
+
+enum Language {
+  en
+  hi
+}
+
+enum TxType {
+  SAVE
+  WITHDRAW
+}
+
+enum TxStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  COMPLETED
+}
+
+enum WithdrawalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model User {
+  id            String          @id @default(cuid())
+  name          String
+  phone         String          @unique
+  pinHash       String          @map("pin_hash")
+  language      Language        @default(en)
+  role          Role            @default(USER)
+  streakDays    Int             @default(0) @map("streak_days")
+  lastSaveDate  DateTime?       @map("last_save_date")
+  createdAt     DateTime        @default(now()) @map("created_at")
+  updatedAt     DateTime        @updatedAt @map("updated_at")
+  
+  transactions  Transaction[]
+  withdrawals   Withdrawal[]
+  goals         Goal[]
+  rewards       Reward[]
+  auditLogs     AuditLog[]
+  notifications Notification[]
+  voiceCommands VoiceCommand[]
+
+  @@map("users")
+}
+
+model Transaction {
+  id          String    @id @default(cuid())
+  userId      String    @map("user_id")
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount      Float
+  type        TxType
+  status      TxStatus  @default(COMPLETED)
+  description String?
+  timestamp   DateTime  @default(now())
+
+  @@map("transactions")
+}
+
+model Withdrawal {
+  id        String           @id @default(cuid())
+  userId    String           @map("user_id")
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount    Float
+  status    WithdrawalStatus @default(PENDING)
+  createdAt DateTime         @default(now()) @map("created_at")
+  updatedAt DateTime         @updatedAt @map("updated_at")
+
+  @@map("withdrawals")
+}
+
+model Goal {
+  id           String   @id @default(cuid())
+  userId       String   @map("user_id")
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title        String
+  targetAmount Float    @map("target_amount")
+  currentAmount Float   @default(0) @map("current_amount")
+  deadline     DateTime
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("goals")
+}
+
+model Reward {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  badge     String   // e.g. FIRST_SAVE, STREAK_7, STREAK_30, SAVE_1000, SAVE_5000
+  awardedAt DateTime @default(now()) @map("awarded_at")
+
+  @@map("rewards")
+}
+
+model Tip {
+  id        String   @id @default(cuid())
+  contentEn String   @map("content_en")
+  contentHi String   @map("content_hi")
+  category  String   // e.g. SAVINGS, BUDGETING, LOANS
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("tips")
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?  @map("user_id")
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String
+  details   String
+  ipAddress String?  @map("ip_address")
+  timestamp DateTime @default(now())
+
+  @@map("audit_logs")
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  titleEn   String   @map("title_en")
+  titleHi   String   @map("title_hi")
+  messageEn String   @map("message_en")
+  messageHi String   @map("message_hi")
+  isRead    Boolean  @default(false) @map("is_read")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("notifications")
+}
+
+model VoiceCommand {
+  id             String   @id @default(cuid())
+  userId         String   @map("user_id")
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  commandText    String   @map("command_text")
+  recognizedIntent String @map("recognized_intent")
+  timestamp      DateTime @default(now())
+
+  @@map("voice_commands")
+}

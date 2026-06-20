@@ -1,0 +1,32 @@
+{
+  "name": "BachatVaani Micro-Savings",
+  "short_name": "BachatVaani",
+  "description": "Voice-Enabled Micro-Savings Platform for Daily Wage Workers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Save Money",
+      "short_name": "Save",
+      "description": "Deposit your daily earnings",
+      "url": "/dashboard/savings",
+      "icons": [{ "src": "/icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Voice Assistant",
+      "short_name": "Voice",
+      "description": "Talk to BachatVaani",
+      "url": "/dashboard/voice",
+      "icons": [{ "src": "/icon.svg", "sizes": "any" }]
+    }
+  ]
+}

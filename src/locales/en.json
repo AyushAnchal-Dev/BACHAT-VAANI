@@ -1,0 +1,141 @@
+{
+  "app": {
+    "title": "BachatVaani",
+    "tagline": "Voice-Enabled Micro-Savings for Daily Wage Workers"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "savings": "Save Money",
+    "withdrawals": "Withdrawal",
+    "goals": "Goals",
+    "rewards": "Rewards",
+    "leaderboard": "Leaderboard",
+    "voice": "Voice Assistant",
+    "profile": "Profile",
+    "settings": "Settings",
+    "admin": "Admin Panel",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "forgotPin": "Forgot PIN?",
+    "phoneNumber": "Phone Number",
+    "pin": "4-Digit PIN",
+    "name": "Full Name",
+    "language": "Preferred Language",
+    "enterDetails": "Enter your credentials to access your account",
+    "createAccount": "Create an account to start saving",
+    "alreadyHaveAccount": "Already have an account? Login",
+    "dontHaveAccount": "Don't have an account? Register",
+    "resetPin": "Reset PIN",
+    "errorPhone": "Phone number must be exactly 10 digits",
+    "errorPin": "PIN must be exactly 4 digits",
+    "errorName": "Name is required"
+  },
+  "dashboard": {
+    "welcome": "Welcome back, {name}!",
+    "totalSavings": "Total Savings",
+    "thisMonthSavings": "Savings This Month",
+    "currentStreak": "Current Streak",
+    "savingsGoal": "Active Savings Goal",
+    "streakDays": "{days} Days",
+    "recentTransactions": "Recent Activity",
+    "quickVoice": "Quick Voice Save",
+    "voicePrompt": "Tap mic and say 'Save 50 rupees' or '50 rupaye save karo'",
+    "tips": "Financial Tip of the Day"
+  },
+  "savings": {
+    "title": "Save Money",
+    "amount": "Enter Amount (₹)",
+    "confirm": "Confirm Deposit",
+    "success": "Successfully saved ₹{amount}!",
+    "error": "Failed to save. Please try again.",
+    "saveNow": "Save Now",
+    "voiceSave": "Voice Save"
+  },
+  "withdrawals": {
+    "title": "Request Withdrawal",
+    "amount": "Amount to Withdraw (₹)",
+    "request": "Submit Request",
+    "insufficient": "Insufficient balance",
+    "success": "Withdrawal request of ₹{amount} submitted for approval.",
+    "error": "Failed to request. Please try again.",
+    "pending": "Pending Approval",
+    "approved": "Approved",
+    "rejected": "Rejected"
+  },
+  "goals": {
+    "title": "Savings Goals",
+    "create": "Create Savings Goal",
+    "goalName": "Goal Name",
+    "target": "Target Amount (₹)",
+    "deadline": "Target Date",
+    "progress": "Progress",
+    "success": "Goal created successfully!",
+    "noGoals": "No active savings goals. Create one to stay motivated!"
+  },
+  "rewards": {
+    "title": "Streak & Badges",
+    "badgesEarned": "Badges Earned",
+    "streakText": "You are on a {days}-day saving streak! Keep it up!",
+    "badges": {
+      "FIRST_SAVE": "First Saver",
+      "STREAK_7": "7-Day Warrior",
+      "STREAK_30": "Monthly Champion",
+      "SAVE_1000": "Thousand Club",
+      "SAVE_5000": "Wealth Builder"
+    },
+    "badgeDescs": {
+      "FIRST_SAVE": "Awarded for making your first micro-saving.",
+      "STREAK_7": "Saved money for 7 days in a row.",
+      "STREAK_30": "Saved money for 30 days in a row.",
+      "SAVE_1000": "Accumulated over ₹1,000 in total savings.",
+      "SAVE_5000": "Accumulated over ₹5,000 in total savings."
+    }
+  },
+  "leaderboard": {
+    "title": "Village Leaderboard",
+    "rank": "Rank",
+    "name": "Name",
+    "savings": "Savings",
+    "streak": "Streak",
+    "groupRank": "Your Village Group Rank: #{rank}"
+  },
+  "voice": {
+    "listening": "Listening...",
+    "speakNow": "Speak now...",
+    "idle": "Tap the microphone to speak",
+    "unsupported": "Your browser does not support voice recognition.",
+    "understood": "Understood command: '{command}'",
+    "error": "Could not understand. Try saying 'Save 20 rupees' or '20 rupaye save karo'."
+  },
+  "simulator": {
+    "title": "Savings Impact Simulator",
+    "subtitle": "See how small daily savings grow into a large safety net",
+    "sliderLabel": "If you save daily:",
+    "weekly": "In 1 Week",
+    "monthly": "In 1 Month",
+    "yearly": "In 1 Year",
+    "fiveYear": "In 5 Years",
+    "bonus": "Govt/Platform Match (10% Bonus)",
+    "interest": "Estimated Interest (6% Compound)",
+    "total": "Total Accumulated Wealth"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark all as read",
+    "viewAll": "View all notifications",
+    "noNotifications": "No notifications yet",
+    "allCaughtUp": "You're all caught up!",
+    "unread": "Unread",
+    "read": "Read",
+    "markRead": "Mark as read",
+    "justNow": "Just now",
+    "minutesAgo": "{count}m ago",
+    "hoursAgo": "{count}h ago",
+    "daysAgo": "{count}d ago"
+  }
+}

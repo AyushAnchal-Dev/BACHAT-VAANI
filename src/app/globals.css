@@ -2,20 +2,266 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Premium Light Mode Palette (Zerodha/Groww inspired) */
+    --background: 210 20% 98%;      /* #f4f6f9 - Clean cool gray background */
+    --foreground: 222 47% 11%;      /* #0f172a - Deep navy black text */
+
+    --card: 0 0% 100%;             /* #ffffff - Pure white cards */
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 221 83% 53%;         /* #2563eb - Trust Blue */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 213 27% 92%;       /* #e2e8f0 - Light cool gray secondary */
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 215 16% 47%;           /* Slate gray text/borders */
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 165 100% 41%;         /* #00d09c - Emerald Green for savings/metrics */
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;          /* #e2e8f0 - Subtle card border */
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.75rem;              /* Consistent spacing/radius */
+  }
+
+  .dark {
+    /* Premium Dark Mode Palette (Cred/Jupiter inspired) */
+    --background: 224 35% 8%;       /* #090d16 - Deep space black-navy */
+    --foreground: 210 40% 98%;      /* #f8fafc - Crisp off-white text */
+
+    --card: 222 25% 10%;            /* #111624 - Flat slate-navy panels */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 25% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;         /* Vibrant blue accent */
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 220 20% 16%;       /* #1e2536 - Darker gray-navy */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 215 20% 65%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 165 100% 41%;         /* #00d09c - Emerald Green */
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 20% 18%;          /* #1d2433 - Sleek borders */
+    --input: 222 20% 18%;
+    --ring: 224 76% 48%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+}
+
+/* Premium Card Layouts */
+.fintech-card {
+  @apply bg-card text-card-foreground rounded-xl border border-border transition-all duration-200;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.fintech-card:hover {
+  @apply border-muted-foreground/30;
+}
+
+.dark .fintech-card {
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dark .fintech-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Spacing and Spacing Grids */
+.fintech-grid {
+  @apply grid gap-6;
+}
+
+/* Centralizing Voice Wave */
+@keyframes voiceWave {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1.0); }
+}
+
+.voice-wave-bar {
+  animation: voiceWave 1s ease-in-out infinite;
+}
+
+.voice-wave-bar:nth-child(2) { animation-delay: 0.15s; }
+.voice-wave-bar:nth-child(3) { animation-delay: 0.3s; }
+.voice-wave-bar:nth-child(4) { animation-delay: 0.1s; }
+.voice-wave-bar:nth-child(5) { animation-delay: 0.2s; }
+
+/* Notification Badge Pulse */
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.notification-badge-pulse {
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+/* Notification Dropdown Enter */
+@keyframes notifDropdownEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.notification-dropdown-enter {
+  animation: notifDropdownEnter 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Notification History Item Stagger */
+@keyframes notifItemEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notification-item-enter {
+  animation: notifItemEnter 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-fill-mode: both;
+}
+
+/* Voice Demo Page Animations */
+@keyframes voiceDemoHeroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.voice-demo-hero-enter {
+  animation: voiceDemoHeroEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes voiceDemoPanelEnter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.voice-demo-panel-enter {
+  animation: voiceDemoPanelEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-fill-mode: both;
+}
+
+/* Mic ring pulse */
+@keyframes micRingPulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+.mic-ring-pulse {
+  animation: micRingPulse 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Voice Response Slide-in */
+@keyframes voiceResponseEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.voice-response-enter {
+  animation: voiceResponseEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Badge Shimmer Effect */
+@keyframes badgeShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.badge-shimmer {
+  animation: badgeShimmer 2.5s ease-in-out infinite;
+}
+
+/* Badge Emoji Bounce */
+@keyframes emojiBounce {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.15) rotate(-5deg); }
+  50% { transform: scale(1.05) rotate(3deg); }
+  75% { transform: scale(1.1) rotate(-2deg); }
+}
+
+.badge-emoji-bounce {
+  display: inline-block;
+  animation: emojiBounce 3s ease-in-out infinite;
+}
+
+/* Badge Unlocked Glow */
+.badge-unlocked-glow {
+  box-shadow: 0 0 20px rgba(var(--accent), 0.15);
+}
+
+/* Next Badge Pulse */
+@keyframes nextBadgePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.15); }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px 4px rgba(37, 99, 235, 0.1); }
+}
+
+.badge-next-pulse {
+  animation: nextBadgePulse 2.5s ease-in-out infinite;
+}
+
+/* Streak Flame Animate */
+@keyframes streakFlame {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.08) translateY(-2px); }
+}
+
+.streak-flame-animate {
+  animation: streakFlame 1.5s ease-in-out infinite;
 }
