@@ -7,10 +7,6 @@ BachatVaani is a production-ready, voice-enabled micro-savings Progressive Web A
 ## 🏗️ Architecture Diagram
 
 ```mermaid
-graph TD
-    User([Daily Wage Worker])
-    Voice[Web Speech API: Mic & TTS]
-    # BachatKhata — Voice-enabled Micro-Savings PWA
 
     BachatKhata is a voice-enabled Progressive Web App (PWA) that enables daily-wage workers, street vendors, and helpers to save micro-amounts, query balances by voice, and track streaks. The app is built with Next.js (App Router), Tailwind CSS, Prisma + PostgreSQL (Neon), and a lightweight serverless API.
 
@@ -96,11 +92,6 @@ graph TD
     - Use `prisma migrate deploy` for production migrations.
 
     See `docs/DEPLOYMENT.md` for more details.
-
-    ---
-
-    **Screenshots**
-    - (Add screenshots in `public/screenshots/` and reference them here.)
 
     ---
 
