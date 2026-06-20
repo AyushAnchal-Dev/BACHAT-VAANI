@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate --schema=prisma/schema.prisma && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
@@ -19,7 +19,7 @@
     "framer-motion": "^12.40.0",
     "jsonwebtoken": "^9.0.3",
     "lucide-react": "^1.21.0",
-    "next": "15.0.0",
+    "next": "15.0.3",
     "pg": "^8.22.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
