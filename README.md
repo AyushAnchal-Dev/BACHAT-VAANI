@@ -149,18 +149,4 @@ Run Vitest unit and end-to-end integration tests:
 npm run test
 ```
 
----
 
-## 🚀 Deployment Guide
-
-### 🚀 Neon Database Setup
-1. Create a free project on [Neon.tech](https://neon.tech).
-2. Go to Project Settings and create a schema named `bachatvaani`.
-3. Copy your Connection String and verify it ends with `?sslmode=require`.
-
-### ⚡ Vercel Deployment
-1. Import your repository into [Vercel](https://vercel.com).
-2. Add your environment variables:
-   * `DATABASE_URL`
-   * `JWT_SECRET`
-3. Hit **Deploy**. Vercel will automatically build the optimized serverless routes and deploy the Progressive Web App.
