@@ -1,4 +1,7 @@
-const JWT_SECRET = process.env.JWT_SECRET || 'bachatvaani_default_secret_key_12345678';
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  throw new Error('JWT_SECRET is not defined. Set JWT_SECRET in environment variables (see .env.example)');
+}
 const encoder = new TextEncoder();
 
 async function getCryptoKey(): Promise<CryptoKey> {
