@@ -274,7 +274,7 @@ CodeV
 
 Team Members
 
-- Ayush Bhardwaj
+- Ayush Anchal 
 - Md. Shagauf Neyazi
 
 ---
